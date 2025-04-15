@@ -8,7 +8,7 @@ const wss = new WebSocket.Server({ server });
 
 // Basic route to confirm server is running
 app.get('/', (req, res) => {
-  res.send('WebSocket server for ESP32 LED control is running');
+  res.send('WebSocket server for ESP32 DHT11 sensor is running');
 });
 
 // WebSocket connection handling
@@ -19,7 +19,7 @@ wss.on('connection', (ws) => {
     const msg = message.toString();
     console.log('Received:', msg);
 
-    // Broadcast message to all connected clients (webpage and ESP32)
+    // Broadcast message to all connected clients (webpage)
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
         client.send(msg);
