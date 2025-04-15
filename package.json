@@ -1,7 +1,7 @@
 {
-  "name": "esp32-led-control",
+  "name": "esp32-dht11-server",
   "version": "1.0.0",
-  "description": "Node.js WebSocket server for ESP32 LED control",
+  "description": "Node.js WebSocket server for ESP32 DHT11 sensor",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
