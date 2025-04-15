@@ -1,27 +1,25 @@
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
-const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-// Serve the HTML page
+// Basic route to confirm server is running
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.send('WebSocket server for ESP32 LED control is running');
 });
 
 // WebSocket connection handling
 wss.on('connection', (ws) => {
   console.log('New client connected');
 
-  // Handle incoming messages
   ws.on('message', (message) => {
     const msg = message.toString();
     console.log('Received:', msg);
 
-    // Broadcast message to all connected clients (ESP32 and webpage)
+    // Broadcast message to all connected clients (webpage and ESP32)
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
         client.send(msg);
@@ -35,7 +33,7 @@ wss.on('connection', (ws) => {
 });
 
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
