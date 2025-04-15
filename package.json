@@ -1,13 +1,14 @@
 {
-  "name": "esp32-dht11-server",
+  "name": "esp32-dht11-mqtt",
   "version": "1.0.0",
-  "description": "Node.js WebSocket server for ESP32 DHT11 sensor",
+  "description": "Node.js MQTT-WebSocket server for ESP32 DHT11",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "ws": "^8.14.2"
+    "ws": "^8.14.2",
+    "mqtt": "^5.0.5"
   }
 }
