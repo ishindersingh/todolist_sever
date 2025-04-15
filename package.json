@@ -1,7 +1,7 @@
 {
   "name": "esp32-led-control",
   "version": "1.0.0",
-  "description": "Node.js server for ESP32 LED control",
+  "description": "Node.js WebSocket server for ESP32 LED control",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
